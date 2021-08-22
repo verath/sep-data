@@ -84,10 +84,7 @@ fn main() -> Result<()> {
             Box::new(UDPClient::new(port, nonblocking))
         }
         Protocol::Tcp => {
-            let hostname = match args.next() {
-                Some(hostname) => hostname,
-                _ => String::from("localhost"),
-            };
+            let hostname = args.next().unwrap_or_else(|| String::from("localhost"));
             println!("Connecting to TCP (hostname={}, port={})", hostname, port);
             Box::new(TCPClient::new(&hostname, port, nonblocking))
         }
