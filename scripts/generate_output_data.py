@@ -45,6 +45,7 @@ SEP_TO_RUST_DATA_TYPE = {
     "SEType_u32": "SETypeU32",
     "SEType_u64": "SETypeU64",
     "SEType_float": "SETypeFloat",
+    "SEType_f64": "SETypeF64",
     "SEType_Vector": "SETypeVector",
     "SEType_Point2D": "SETypePoint2D",
     "SEType_Point3D": "SETypePoint3D",
@@ -74,8 +75,8 @@ def main():
         data_type = SEP_TO_RUST_DATA_TYPE[d["DataType"]]
         required_module = d["RequiredModule"]
 
-        if required_module == "AdditionalOutput":
-            # TODO: maybe support AdditionalOutput in the future..?
+        if required_module == "FacialFeatures":
+            # TODO: maybe support FacialFeatures module in the future..?
             continue
 
         type_enum_entries += TYPE_ENUM_ENTRY_TEMPLATE % {

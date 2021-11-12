@@ -652,6 +652,30 @@ fn parse_sub_packet_data(
             let (i, v) = parse_world_intersections(i)?;
             Ok((i, Data::SEEstimatedRightAllWorldIntersections(v)))
         }
+        Id::SEFilteredEstimatedClosestWorldIntersection => {
+            let (i, v) = parse_world_intersection(i)?;
+            Ok((i, Data::SEFilteredEstimatedClosestWorldIntersection(v)))
+        }
+        Id::SEFilteredEstimatedAllWorldIntersections => {
+            let (i, v) = parse_world_intersections(i)?;
+            Ok((i, Data::SEFilteredEstimatedAllWorldIntersections(v)))
+        }
+        Id::SEFilteredEstimatedLeftClosestWorldIntersection => {
+            let (i, v) = parse_world_intersection(i)?;
+            Ok((i, Data::SEFilteredEstimatedLeftClosestWorldIntersection(v)))
+        }
+        Id::SEFilteredEstimatedLeftAllWorldIntersections => {
+            let (i, v) = parse_world_intersections(i)?;
+            Ok((i, Data::SEFilteredEstimatedLeftAllWorldIntersections(v)))
+        }
+        Id::SEFilteredEstimatedRightClosestWorldIntersection => {
+            let (i, v) = parse_world_intersection(i)?;
+            Ok((i, Data::SEFilteredEstimatedRightClosestWorldIntersection(v)))
+        }
+        Id::SEFilteredEstimatedRightAllWorldIntersections => {
+            let (i, v) = parse_world_intersections(i)?;
+            Ok((i, Data::SEFilteredEstimatedRightAllWorldIntersections(v)))
+        }
         Id::SEEyelidOpening => {
             let (i, v) = parse_f64(i)?;
             Ok((i, Data::SEEyelidOpening(v)))
