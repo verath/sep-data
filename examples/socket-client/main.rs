@@ -77,16 +77,15 @@ fn main() -> Result<()> {
         },
     };
 
-    let nonblocking = true;
     let mut client: Box<dyn Client> = match protocol {
         Protocol::Udp => {
             println!("Listening for UDP data (port={})", port);
-            Box::new(UDPClient::new(port, nonblocking))
+            Box::new(UDPClient::new(port))
         }
         Protocol::Tcp => {
             let hostname = args.next().unwrap_or_else(|| String::from("localhost"));
             println!("Connecting to TCP (hostname={}, port={})", hostname, port);
-            Box::new(TCPClient::new(&hostname, port, nonblocking))
+            Box::new(TCPClient::new(&hostname, port))
         }
     };
     client.connect()?;

@@ -107,7 +107,7 @@ impl TcpStreamReader {
 }
 
 enum TCPClientState {
-    Pending { addr: String, nonblocking: bool },
+    Pending { addr: String },
     Connected { stream_reader: TcpStreamReader },
     Disconnected,
 }
@@ -117,9 +117,9 @@ pub struct TCPClient {
 }
 
 impl TCPClient {
-    pub fn new(hostname: &str, port: u16, nonblocking: bool) -> Self {
+    pub fn new(hostname: &str, port: u16) -> Self {
         let addr = format!("{}:{}", hostname, port);
-        let state = TCPClientState::Pending { addr, nonblocking };
+        let state = TCPClientState::Pending { addr };
         TCPClient { state }
     }
 }
@@ -127,11 +127,9 @@ impl TCPClient {
 impl Client for TCPClient {
     fn connect(&mut self) -> Result<(), ClientError> {
         match &self.state {
-            TCPClientState::Pending { addr, nonblocking } => {
+            TCPClientState::Pending { addr } => {
                 let stream = TcpStream::connect(addr.as_str()).map_err(ClientError::Connect)?;
-                if *nonblocking {
-                    stream.set_nonblocking(true).map_err(ClientError::Connect)?;
-                }
+                stream.set_nonblocking(true).map_err(ClientError::Connect)?;
                 let stream_reader = TcpStreamReader::new(stream);
                 self.state = TCPClientState::Connected { stream_reader };
                 Ok(())
@@ -178,7 +176,7 @@ impl Client for TCPClient {
 }
 
 enum UDPClientState {
-    Pending { addr: String, nonblocking: bool },
+    Pending { addr: String },
     Connected { socket: UdpSocket, buf: Vec<u8> },
     Disconnected,
 }
@@ -188,9 +186,9 @@ pub struct UDPClient {
 }
 
 impl UDPClient {
-    pub fn new(port: u16, nonblocking: bool) -> Self {
+    pub fn new(port: u16) -> Self {
         let addr = format!("0.0.0.0:{}", port);
-        let state = UDPClientState::Pending { addr, nonblocking };
+        let state = UDPClientState::Pending { addr };
         UDPClient { state }
     }
 }
@@ -198,11 +196,9 @@ impl UDPClient {
 impl Client for UDPClient {
     fn connect(&mut self) -> Result<(), ClientError> {
         match &self.state {
-            UDPClientState::Pending { addr, nonblocking } => {
+            UDPClientState::Pending { addr } => {
                 let socket = UdpSocket::bind(addr.as_str()).map_err(ClientError::Connect)?;
-                if *nonblocking {
-                    socket.set_nonblocking(true).map_err(ClientError::Connect)?;
-                }
+                socket.set_nonblocking(true).map_err(ClientError::Connect)?;
                 // Pre-allocate buf.
                 let mut buf = Vec::new();
                 buf.resize(u16::MAX as usize, 0);
