@@ -22,6 +22,9 @@ pub enum ClientError {
     #[error("read would block")]
     ReadWouldBlock,
 
+    #[error("server disconnected")]
+    Disconnected,
+
     #[error("invalid packet")]
     InvalidPacket(#[source] parser::ParseFailedError),
 }
@@ -73,6 +76,7 @@ impl TcpStreamReader {
             .read_exact(&mut self.buf[old_len..])
             .map_err(|e| match e {
                 ref e if e.kind() == io::ErrorKind::WouldBlock => ClientError::ReadWouldBlock,
+                ref e if e.kind() == io::ErrorKind::UnexpectedEof => ClientError::Disconnected,
                 _ => ClientError::Read(e),
             })
     }
