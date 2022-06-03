@@ -908,6 +908,134 @@ fn parse_sub_packet_data(
             let (i, v) = parse_f64(i)?;
             Ok((i, Data::SEFilteredEstimatedRightGazePitch(v)))
         }
+        Id::SEEmotionJoy => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionJoy(v)))
+        }
+        Id::SEEmotionFear => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionFear(v)))
+        }
+        Id::SEEmotionDisgust => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionDisgust(v)))
+        }
+        Id::SEEmotionSadness => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionSadness(v)))
+        }
+        Id::SEEmotionSurprise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionSurprise(v)))
+        }
+        Id::SEEmotionValence => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionValence(v)))
+        }
+        Id::SEEmotionEngagement => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionEngagement(v)))
+        }
+        Id::SEEmotionSentimentality => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionSentimentality(v)))
+        }
+        Id::SEEmotionConfusion => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionConfusion(v)))
+        }
+        Id::SEEmotionNeutral => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionNeutral(v)))
+        }
+        Id::SEEmotionQ => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEEmotionQ(v)))
+        }
+        Id::SEExpressionSmile => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionSmile(v)))
+        }
+        Id::SEExpressionInnerBrowRaise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionInnerBrowRaise(v)))
+        }
+        Id::SEExpressionBrowRaise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionBrowRaise(v)))
+        }
+        Id::SEExpressionBrowFurrow => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionBrowFurrow(v)))
+        }
+        Id::SEExpressionNoseWrinkle => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionNoseWrinkle(v)))
+        }
+        Id::SEExpressionUpperLipRaise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionUpperLipRaise(v)))
+        }
+        Id::SEExpressionLipCornerDepressor => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLipCornerDepressor(v)))
+        }
+        Id::SEExpressionChinRaise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionChinRaise(v)))
+        }
+        Id::SEExpressionLipPucker => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLipPucker(v)))
+        }
+        Id::SEExpressionLipPress => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLipPress(v)))
+        }
+        Id::SEExpressionLipSuck => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLipSuck(v)))
+        }
+        Id::SEExpressionMouthOpen => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionMouthOpen(v)))
+        }
+        Id::SEExpressionSmirk => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionSmirk(v)))
+        }
+        Id::SEExpressionAttention => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionAttention(v)))
+        }
+        Id::SEExpressionEyeWiden => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionEyeWiden(v)))
+        }
+        Id::SEExpressionCheekRaise => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionCheekRaise(v)))
+        }
+        Id::SEExpressionLidTighten => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLidTighten(v)))
+        }
+        Id::SEExpressionDimpler => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionDimpler(v)))
+        }
+        Id::SEExpressionLipStretch => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionLipStretch(v)))
+        }
+        Id::SEExpressionJawDrop => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionJawDrop(v)))
+        }
+        Id::SEExpressionQ => {
+            let (i, v) = parse_f64(i)?;
+            Ok((i, Data::SEExpressionQ(v)))
+        }
     }
 }
 

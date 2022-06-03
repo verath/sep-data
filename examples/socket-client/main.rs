@@ -69,6 +69,7 @@ fn main() -> Result<()> {
         Some(ref s) if s == "udp" => Protocol::Udp,
         _ => return print_usage(),
     };
+    // Port argument is optional, if not provided fallback to default.
     let port = match args.next() {
         Some(port) => port.parse().context("Failed to parse port")?,
         _ => match protocol {

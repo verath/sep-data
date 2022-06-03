@@ -163,6 +163,38 @@ pub enum SEOutputData {
     SERightEyelidState(SETypeU8),
     SEUserMarker(SETypeUserMarker),
     SECameraClocks(SETypeVector),
+    SEEmotionJoy(SETypeF64),
+    SEEmotionFear(SETypeF64),
+    SEEmotionDisgust(SETypeF64),
+    SEEmotionSadness(SETypeF64),
+    SEEmotionSurprise(SETypeF64),
+    SEEmotionValence(SETypeF64),
+    SEEmotionEngagement(SETypeF64),
+    SEEmotionSentimentality(SETypeF64),
+    SEEmotionConfusion(SETypeF64),
+    SEEmotionNeutral(SETypeF64),
+    SEEmotionQ(SETypeF64),
+    SEExpressionSmile(SETypeF64),
+    SEExpressionInnerBrowRaise(SETypeF64),
+    SEExpressionBrowRaise(SETypeF64),
+    SEExpressionBrowFurrow(SETypeF64),
+    SEExpressionNoseWrinkle(SETypeF64),
+    SEExpressionUpperLipRaise(SETypeF64),
+    SEExpressionLipCornerDepressor(SETypeF64),
+    SEExpressionChinRaise(SETypeF64),
+    SEExpressionLipPucker(SETypeF64),
+    SEExpressionLipPress(SETypeF64),
+    SEExpressionLipSuck(SETypeF64),
+    SEExpressionMouthOpen(SETypeF64),
+    SEExpressionSmirk(SETypeF64),
+    SEExpressionAttention(SETypeF64),
+    SEExpressionEyeWiden(SETypeF64),
+    SEExpressionCheekRaise(SETypeF64),
+    SEExpressionLidTighten(SETypeF64),
+    SEExpressionDimpler(SETypeF64),
+    SEExpressionLipStretch(SETypeF64),
+    SEExpressionJawDrop(SETypeF64),
+    SEExpressionQ(SETypeF64),
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
@@ -327,6 +359,38 @@ pub enum SEOutputDataId {
     SERightEyelidState = 0x391,
     SEUserMarker = 0x3a0,
     SECameraClocks = 0x3a1,
+    SEEmotionJoy = 0x3b0,
+    SEEmotionFear = 0x3b1,
+    SEEmotionDisgust = 0x3b2,
+    SEEmotionSadness = 0x3b3,
+    SEEmotionSurprise = 0x3b5,
+    SEEmotionValence = 0x3b7,
+    SEEmotionEngagement = 0x3b8,
+    SEEmotionSentimentality = 0x3b9,
+    SEEmotionConfusion = 0x3ba,
+    SEEmotionNeutral = 0x3bb,
+    SEEmotionQ = 0x3bc,
+    SEExpressionSmile = 0x3c0,
+    SEExpressionInnerBrowRaise = 0x3c1,
+    SEExpressionBrowRaise = 0x3c2,
+    SEExpressionBrowFurrow = 0x3c3,
+    SEExpressionNoseWrinkle = 0x3c4,
+    SEExpressionUpperLipRaise = 0x3c5,
+    SEExpressionLipCornerDepressor = 0x3c6,
+    SEExpressionChinRaise = 0x3c7,
+    SEExpressionLipPucker = 0x3c8,
+    SEExpressionLipPress = 0x3c9,
+    SEExpressionLipSuck = 0x3ca,
+    SEExpressionMouthOpen = 0x3cb,
+    SEExpressionSmirk = 0x3d0,
+    SEExpressionAttention = 0x3d3,
+    SEExpressionEyeWiden = 0x3d4,
+    SEExpressionCheekRaise = 0x3d5,
+    SEExpressionLidTighten = 0x3d6,
+    SEExpressionDimpler = 0x3d7,
+    SEExpressionLipStretch = 0x3d8,
+    SEExpressionJawDrop = 0x3d9,
+    SEExpressionQ = 0x3e0,
 }
 
 impl std::convert::TryFrom<u16> for SEOutputDataId {
@@ -751,6 +815,94 @@ impl std::convert::TryFrom<u16> for SEOutputDataId {
             }
             x if x == SEOutputDataId::SEUserMarker as u16 => Ok(SEOutputDataId::SEUserMarker),
             x if x == SEOutputDataId::SECameraClocks as u16 => Ok(SEOutputDataId::SECameraClocks),
+            x if x == SEOutputDataId::SEEmotionJoy as u16 => Ok(SEOutputDataId::SEEmotionJoy),
+            x if x == SEOutputDataId::SEEmotionFear as u16 => Ok(SEOutputDataId::SEEmotionFear),
+            x if x == SEOutputDataId::SEEmotionDisgust as u16 => {
+                Ok(SEOutputDataId::SEEmotionDisgust)
+            }
+            x if x == SEOutputDataId::SEEmotionSadness as u16 => {
+                Ok(SEOutputDataId::SEEmotionSadness)
+            }
+            x if x == SEOutputDataId::SEEmotionSurprise as u16 => {
+                Ok(SEOutputDataId::SEEmotionSurprise)
+            }
+            x if x == SEOutputDataId::SEEmotionValence as u16 => {
+                Ok(SEOutputDataId::SEEmotionValence)
+            }
+            x if x == SEOutputDataId::SEEmotionEngagement as u16 => {
+                Ok(SEOutputDataId::SEEmotionEngagement)
+            }
+            x if x == SEOutputDataId::SEEmotionSentimentality as u16 => {
+                Ok(SEOutputDataId::SEEmotionSentimentality)
+            }
+            x if x == SEOutputDataId::SEEmotionConfusion as u16 => {
+                Ok(SEOutputDataId::SEEmotionConfusion)
+            }
+            x if x == SEOutputDataId::SEEmotionNeutral as u16 => {
+                Ok(SEOutputDataId::SEEmotionNeutral)
+            }
+            x if x == SEOutputDataId::SEEmotionQ as u16 => Ok(SEOutputDataId::SEEmotionQ),
+            x if x == SEOutputDataId::SEExpressionSmile as u16 => {
+                Ok(SEOutputDataId::SEExpressionSmile)
+            }
+            x if x == SEOutputDataId::SEExpressionInnerBrowRaise as u16 => {
+                Ok(SEOutputDataId::SEExpressionInnerBrowRaise)
+            }
+            x if x == SEOutputDataId::SEExpressionBrowRaise as u16 => {
+                Ok(SEOutputDataId::SEExpressionBrowRaise)
+            }
+            x if x == SEOutputDataId::SEExpressionBrowFurrow as u16 => {
+                Ok(SEOutputDataId::SEExpressionBrowFurrow)
+            }
+            x if x == SEOutputDataId::SEExpressionNoseWrinkle as u16 => {
+                Ok(SEOutputDataId::SEExpressionNoseWrinkle)
+            }
+            x if x == SEOutputDataId::SEExpressionUpperLipRaise as u16 => {
+                Ok(SEOutputDataId::SEExpressionUpperLipRaise)
+            }
+            x if x == SEOutputDataId::SEExpressionLipCornerDepressor as u16 => {
+                Ok(SEOutputDataId::SEExpressionLipCornerDepressor)
+            }
+            x if x == SEOutputDataId::SEExpressionChinRaise as u16 => {
+                Ok(SEOutputDataId::SEExpressionChinRaise)
+            }
+            x if x == SEOutputDataId::SEExpressionLipPucker as u16 => {
+                Ok(SEOutputDataId::SEExpressionLipPucker)
+            }
+            x if x == SEOutputDataId::SEExpressionLipPress as u16 => {
+                Ok(SEOutputDataId::SEExpressionLipPress)
+            }
+            x if x == SEOutputDataId::SEExpressionLipSuck as u16 => {
+                Ok(SEOutputDataId::SEExpressionLipSuck)
+            }
+            x if x == SEOutputDataId::SEExpressionMouthOpen as u16 => {
+                Ok(SEOutputDataId::SEExpressionMouthOpen)
+            }
+            x if x == SEOutputDataId::SEExpressionSmirk as u16 => {
+                Ok(SEOutputDataId::SEExpressionSmirk)
+            }
+            x if x == SEOutputDataId::SEExpressionAttention as u16 => {
+                Ok(SEOutputDataId::SEExpressionAttention)
+            }
+            x if x == SEOutputDataId::SEExpressionEyeWiden as u16 => {
+                Ok(SEOutputDataId::SEExpressionEyeWiden)
+            }
+            x if x == SEOutputDataId::SEExpressionCheekRaise as u16 => {
+                Ok(SEOutputDataId::SEExpressionCheekRaise)
+            }
+            x if x == SEOutputDataId::SEExpressionLidTighten as u16 => {
+                Ok(SEOutputDataId::SEExpressionLidTighten)
+            }
+            x if x == SEOutputDataId::SEExpressionDimpler as u16 => {
+                Ok(SEOutputDataId::SEExpressionDimpler)
+            }
+            x if x == SEOutputDataId::SEExpressionLipStretch as u16 => {
+                Ok(SEOutputDataId::SEExpressionLipStretch)
+            }
+            x if x == SEOutputDataId::SEExpressionJawDrop as u16 => {
+                Ok(SEOutputDataId::SEExpressionJawDrop)
+            }
+            x if x == SEOutputDataId::SEExpressionQ as u16 => Ok(SEOutputDataId::SEExpressionQ),
 
             _ => unimplemented!("{:#x}", value),
         }
